@@ -1,8 +1,7 @@
 use rustpiboot::{boot, Options};
 
 fn main() {
-    env_logger::Builder::from_default_env()
-      .filter_level(log::LevelFilter::Debug)
-      .init();
+    let level = env_logger::Env::default().default_filter_or("debug");
+    env_logger::Builder::from_env(level).init();
     boot(Options::default()).unwrap();
 }
